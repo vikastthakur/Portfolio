@@ -233,6 +233,25 @@ time { color: var(--accent); font-weight: 900; }
 
 @media (max-width: 880px) {
   .navlinks { display: none; }
+  .navlinks.open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 16px clamp(20px, 4vw, 64px);
+    background: rgba(246, 243, 238, 0.98);
+    border-bottom: 1px solid rgba(31, 41, 51, 0.12);
+    box-shadow: 0 18px 40px rgba(31, 41, 51, 0.08);
+  }
+  .navlinks.open a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(31, 41, 51, 0.08);
+  }
+  .navlinks.open a:last-child { border-bottom: none; }
   .iconButton { display: inline-grid; place-items: center; }
   .hero, .split { grid-template-columns: 1fr; }
   .portrait { min-height: 360px; }

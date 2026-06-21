@@ -32,6 +32,8 @@ function linkIcon(type) {
 }
 
 function PortfolioDirectory() {
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
   return (
     <main className="directoryPage">
       <nav className="topbar" aria-label="Main navigation">
@@ -39,11 +41,16 @@ function PortfolioDirectory() {
           <Sparkles size={20} />
           <span>Portfolio Hub</span>
         </a>
-        <div className="navlinks">
-          <a href="#profiles">Profiles</a>
-          <a href="#how">Add New</a>
+        <div className={`navlinks${mobileMenuOpen ? ' open' : ''}`}>
+          <a href="#profiles" onClick={() => setMobileMenuOpen(false)}>Profiles</a>
+          <a href="#how" onClick={() => setMobileMenuOpen(false)}>Add New</a>
         </div>
-        <button className="iconButton" aria-label="Open menu">
+        <button
+          className="iconButton"
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((open) => !open)}
+        >
           <Menu size={20} />
         </button>
       </nav>
@@ -102,6 +109,8 @@ function PortfolioPage({ portfolio }) {
     '--portrait-image': `url('${portfolio.theme.portraitImage}')`,
   };
 
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
   return (
     <main style={themeStyle}>
       <nav className="topbar" aria-label="Main navigation">
@@ -109,14 +118,19 @@ function PortfolioPage({ portfolio }) {
           <Sparkles size={20} />
           <span>{portfolio.name}</span>
         </div>
-        <div className="navlinks">
-          <a href="#home">Home</a>
-          <a href="#work">Work</a>
-          <a href="#experience">Journey</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+        <div className={`navlinks${mobileMenuOpen ? ' open' : ''}`}>
+          <a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a>
+          <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
+          <a href="#experience" onClick={() => setMobileMenuOpen(false)}>Journey</a>
+          <a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a>
+          <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
         </div>
-        <button className="iconButton" aria-label="Open menu">
+        <button
+          className="iconButton"
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((open) => !open)}
+        >
           <Menu size={20} />
         </button>
       </nav>
